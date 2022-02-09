@@ -79,5 +79,30 @@ class RestaurantTest {
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
 
+    @Test
+    public void display_total_cost_of_all_selected_items() {
+        restaurant.addToMenu("Sweet corn soup", 119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Pizza", 300);
+        restaurant.addToMenu("Sandwich", 100);
+        List <String> itemList = new  ArrayList<String>();
+        itemList.add("Vegetable lasagne");
+        itemList.add("Pizza");
+        itemList.add("Sweet corn soup");
+        assertEquals("Your order will cost: 688",restaurant.displayTotalCost(itemList));
+    }
+
+    @Test
+    public void display_error_message_when_item_passed_to_displayTotalCost_is_not_in_Menu() {
+        restaurant.addToMenu("Sweet corn soup", 119);
+        restaurant.addToMenu("Vegetable lasagne", 269);
+        restaurant.addToMenu("Pizza", 300);
+        restaurant.addToMenu("Sandwich", 100);
+        List <String> itemList = new  ArrayList<String>();
+        itemList.add("Vegetable lasagne");
+        itemList.add("Pizza");
+        itemList.add("Hot N Sour soup");
+        assertEquals("Hot N Sour soup not in Menu. Please check menu and add items appropriately",restaurant.displayTotalCost(itemList));
+    }
 
 }
