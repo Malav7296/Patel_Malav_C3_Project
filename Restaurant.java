@@ -71,6 +71,19 @@ public class Restaurant {
 
     }
 
+    // TDD method to display total cost
+    public String displayTotalCost (List<String> itemList) {
+        int sumOfPrice = 0;
+        boolean flag = false;
+        for(String item : itemList){
+            if (this.findItemByName(item) == null){
+                return item+" not in Menu. Please check menu and add items appropriately";
+            }else{
+                sumOfPrice += this.findItemByName(item).getPrice();
+            }
+
+        }return "Your order will cost: "+sumOfPrice;
+    }
 
     public String getName() {
         return name;
